@@ -1,0 +1,883 @@
+/* ==========================================
+   VEDA TECHNOLOGY
+   TASK 15 - UNIT CONVERTER
+   ========================================== */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+/* ==========================================
+   VARIABLES
+   ========================================== */
+
+:root {
+
+    --background: #eeeadf;
+
+    --surface: #f7f3e9;
+
+    --surface-light: #fbf9f3;
+
+    --tab-muted: #c8c1ad;
+
+    --border: #aaa28e;
+
+    --border-light: #d5cebd;
+
+    --text: #292720;
+
+    --muted: #777264;
+
+    --soft-text: #999284;
+
+    --accent: #8d8778;
+
+    --white: #ffffff;
+
+}
+
+
+/* ==========================================
+   BODY
+   ========================================== */
+
+body {
+
+    min-height: 100vh;
+
+    background: var(--background);
+
+    color: var(--text);
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    overflow-x: hidden;
+
+}
+
+
+/* ==========================================
+   PAGE
+   ========================================== */
+
+.page {
+
+    width: min(100% - 32px, 760px);
+
+    margin: 0 auto;
+
+    padding:
+        70px 0 50px;
+
+}
+
+
+/* ==========================================
+   HEADER
+   ========================================== */
+
+.header {
+
+    width: 100%;
+
+}
+
+
+.title-row {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+}
+
+
+h1 {
+
+    font-size: 28px;
+
+    font-weight: 600;
+
+    letter-spacing: -0.5px;
+
+}
+
+
+.live {
+
+    padding:
+        4px 8px;
+
+    border:
+        1px solid var(--border-light);
+
+    color: var(--soft-text);
+
+    font-family:
+        Arial,
+        sans-serif;
+
+    font-size: 8px;
+
+    letter-spacing: 1px;
+
+    line-height: 1;
+
+}
+
+
+.divider {
+
+    width: 100%;
+
+    height: 1px;
+
+    margin-top: 10px;
+
+    background: var(--text);
+
+}
+
+
+/* ==========================================
+   CONVERTER
+   ========================================== */
+
+.converter {
+
+    margin-top: 18px;
+
+}
+
+
+/* ==========================================
+   CATEGORY TABS
+   ========================================== */
+
+.category-tabs {
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    height: 38px;
+
+}
+
+
+.category-tab {
+
+    border:
+        1px solid var(--border);
+
+    background:
+        var(--tab-muted);
+
+    color: var(--muted);
+
+    font-family: inherit;
+
+    font-size: 14px;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease;
+
+}
+
+
+.category-tab:first-child {
+
+    border-radius:
+        4px 0 0 4px;
+
+}
+
+
+.category-tab:last-child {
+
+    border-radius:
+        0 4px 4px 0;
+
+}
+
+
+.category-tab.active {
+
+    background:
+        var(--surface-light);
+
+    color: var(--text);
+
+}
+
+
+.category-tab:hover {
+
+    color: var(--text);
+
+}
+
+
+/* ==========================================
+   CONVERSION CARD
+   ========================================== */
+
+.conversion-card {
+
+    margin-top: 14px;
+
+    border:
+        1px solid var(--border-light);
+
+    border-radius: 7px;
+
+    background:
+        rgba(250, 247, 238, 0.65);
+
+    overflow: hidden;
+
+}
+
+
+/* ==========================================
+   CONVERSION ROW
+   ========================================== */
+
+.conversion-row {
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1fr)
+        42px
+        minmax(0, 1fr);
+
+    align-items: end;
+
+    gap: 10px;
+
+    padding: 17px 14px;
+
+}
+
+
+/* ==========================================
+   FIELD
+   ========================================== */
+
+.unit-field {
+
+    min-width: 0;
+
+}
+
+
+.unit-field label {
+
+    display: block;
+
+    margin-bottom: 6px;
+
+    color: var(--soft-text);
+
+    font-family:
+        Arial,
+        sans-serif;
+
+    font-size: 8px;
+
+    letter-spacing: 1.2px;
+
+}
+
+
+/* ==========================================
+   CONTROL
+   ========================================== */
+
+.control {
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1fr)
+        150px;
+
+    height: 40px;
+
+}
+
+
+.control input {
+
+    width: 100%;
+
+    min-width: 0;
+
+    border:
+        1px solid var(--border-light);
+
+    border-right: 0;
+
+    border-radius:
+        3px 0 0 3px;
+
+    outline: none;
+
+    background:
+        var(--white);
+
+    color: var(--text);
+
+    padding:
+        0 10px;
+
+    font-family:
+        Arial,
+        sans-serif;
+
+    font-size: 13px;
+
+}
+
+
+.control input:focus {
+
+    border-color:
+        var(--border);
+
+}
+
+
+.control select {
+
+    width: 100%;
+
+    min-width: 0;
+
+    border:
+        1px solid var(--border);
+
+    border-radius:
+        0 3px 3px 0;
+
+    outline: none;
+
+    background:
+        #eeeade;
+
+    color: var(--text);
+
+    padding:
+        0 7px;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: 11px;
+
+    cursor: pointer;
+
+}
+
+
+.control select:focus {
+
+    border-color:
+        var(--text);
+
+}
+
+
+/* ==========================================
+   SWAP BUTTON
+   ========================================== */
+
+.swap {
+
+    width: 34px;
+
+    height: 34px;
+
+    align-self: end;
+
+    justify-self: center;
+
+    border:
+        1px solid var(--border-light);
+
+    border-radius: 50%;
+
+    background:
+        var(--surface-light);
+
+    color: var(--text);
+
+    font-size: 16px;
+
+    font-family:
+        Arial,
+        sans-serif;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.25s ease,
+        background 0.25s ease;
+
+}
+
+
+.swap:hover {
+
+    transform:
+        rotate(180deg);
+
+    background:
+        var(--tab-muted);
+
+}
+
+
+/* ==========================================
+   FACTOR
+   ========================================== */
+
+.factor {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    min-height: 38px;
+
+    padding:
+        0 14px;
+
+    border-top:
+        1px solid var(--border-light);
+
+    color: var(--soft-text);
+
+    font-family:
+        Arial,
+        sans-serif;
+
+    font-size: 9px;
+
+}
+
+
+.factor strong {
+
+    color:
+        #696355;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: 10px;
+
+    font-weight: 400;
+
+}
+
+
+/* ==========================================
+   HINT
+   ========================================== */
+
+.hint {
+
+    margin-top: 14px;
+
+    text-align: center;
+
+    color: var(--soft-text);
+
+    font-family:
+        Arial,
+        sans-serif;
+
+    font-size: 9px;
+
+}
+
+
+/* ==========================================
+   RESULT
+   ========================================== */
+
+.result-area {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 10px;
+
+    min-height: 70px;
+
+    margin-top: 18px;
+
+}
+
+
+.result-symbol {
+
+    width: 25px;
+
+    height: 25px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 5px;
+
+    background:
+        #aaa596;
+
+    color: white;
+
+    font-family:
+        Arial,
+        sans-serif;
+
+    font-size: 12px;
+
+}
+
+
+.result-area p {
+
+    color:
+        var(--muted);
+
+    font-family:
+        Arial,
+        sans-serif;
+
+    font-size: 11px;
+
+}
+
+
+/* ==========================================
+   FEATURES
+   ========================================== */
+
+.features {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 12px;
+
+    margin-top: 25px;
+
+}
+
+
+.feature {
+
+    padding: 17px;
+
+    border:
+        1px solid var(--border-light);
+
+    border-radius: 6px;
+
+    background:
+        rgba(247, 243, 233, 0.45);
+
+}
+
+
+.feature > span {
+
+    display: block;
+
+    margin-bottom: 12px;
+
+    color: var(--soft-text);
+
+    font-family:
+        Arial,
+        sans-serif;
+
+    font-size: 9px;
+
+    letter-spacing: 1px;
+
+}
+
+
+.feature h3 {
+
+    margin-bottom: 6px;
+
+    font-size: 15px;
+
+    font-weight: 600;
+
+}
+
+
+.feature p {
+
+    color:
+        var(--muted);
+
+    font-family:
+        Arial,
+        sans-serif;
+
+    font-size: 10px;
+
+    line-height: 1.5;
+
+}
+
+
+/* ==========================================
+   FOOTER
+   ========================================== */
+
+footer {
+
+    margin-top: 38px;
+
+    text-align: center;
+
+}
+
+
+.footer-line {
+
+    width: 35px;
+
+    height: 1px;
+
+    margin:
+        0 auto 12px;
+
+    background:
+        var(--border);
+
+}
+
+
+footer p {
+
+    color:
+        var(--soft-text);
+
+    font-family:
+        Arial,
+        sans-serif;
+
+    font-size: 9px;
+
+}
+
+
+footer strong {
+
+    color:
+        var(--muted);
+
+}
+
+
+footer small {
+
+    display: block;
+
+    margin-top: 7px;
+
+    color:
+        #aaa394;
+
+    font-family:
+        Arial,
+        sans-serif;
+
+    font-size: 8px;
+
+}
+
+
+/* ==========================================
+   TABLET
+   ========================================== */
+
+@media (max-width: 700px) {
+
+    .page {
+
+        padding-top: 45px;
+
+    }
+
+    .features {
+
+        grid-template-columns: 1fr;
+
+    }
+
+}
+
+
+/* ==========================================
+   MOBILE
+   ========================================== */
+
+@media (max-width: 560px) {
+
+    .page {
+
+        width:
+            calc(100% - 24px);
+
+        padding:
+            30px 0 35px;
+
+    }
+
+
+    h1 {
+
+        font-size: 22px;
+
+    }
+
+
+    .conversion-row {
+
+        grid-template-columns:
+            1fr;
+
+        gap: 12px;
+
+        padding:
+            15px 12px;
+
+    }
+
+
+    .swap {
+
+        width: 30px;
+
+        height: 30px;
+
+        transform: rotate(90deg);
+
+    }
+
+
+    .swap:hover {
+
+        transform:
+            rotate(270deg);
+
+    }
+
+
+    .control {
+
+        grid-template-columns:
+            minmax(0, 1fr)
+            135px;
+
+    }
+
+
+    .factor {
+
+        align-items: flex-start;
+
+        flex-direction: column;
+
+        gap: 4px;
+
+        padding:
+            10px 12px;
+
+    }
+
+
+    .factor strong {
+
+        font-size: 10px;
+
+    }
+
+
+    .result-area {
+
+        min-height: 55px;
+
+    }
+
+}
+
+
+/* ==========================================
+   SMALL MOBILE
+   ========================================== */
+
+@media (max-width: 360px) {
+
+    .control {
+
+        grid-template-columns:
+            minmax(0, 1fr)
+            115px;
+
+    }
+
+
+    .control select {
+
+        font-size: 9px;
+
+    }
+
+
+    .category-tab {
+
+        font-size: 12px;
+
+    }
+
+}

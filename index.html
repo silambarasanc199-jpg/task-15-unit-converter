@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="Unit Converter - Veda Technology Web Development Task 15"
+    >
+
+    <title>Unit Converter | Task 15</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <main class="page">
+
+        <header class="header">
+
+            <div class="title-row">
+                <h1>Unit Converter</h1>
+
+                <span class="live">
+                    LIVE
+                </span>
+            </div>
+
+            <div class="divider"></div>
+
+        </header>
+
+
+        <!-- CATEGORY -->
+        <section class="converter">
+
+            <div class="category-tabs">
+
+                <button
+                    class="category-tab active"
+                    data-category="length"
+                    type="button"
+                >
+                    Length
+                </button>
+
+                <button
+                    class="category-tab"
+                    data-category="weight"
+                    type="button"
+                >
+                    Weight
+                </button>
+
+            </div>
+
+
+            <!-- CONVERSION BOX -->
+            <div class="conversion-card">
+
+                <div class="conversion-row">
+
+                    <!-- FROM -->
+                    <div class="unit-field">
+
+                        <label for="inputValue">
+                            FROM
+                        </label>
+
+                        <div class="control">
+
+                            <input
+                                id="inputValue"
+                                type="number"
+                                value="1"
+                                step="any"
+                                placeholder="Enter value"
+                            >
+
+                            <select id="fromUnit"></select>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- SWAP -->
+                    <button
+                        id="swapBtn"
+                        class="swap"
+                        type="button"
+                        aria-label="Swap units"
+                    >
+                        ⇄
+                    </button>
+
+
+                    <!-- TO -->
+                    <div class="unit-field">
+
+                        <label for="resultValue">
+                            TO
+                        </label>
+
+                        <div class="control">
+
+                            <input
+                                id="resultValue"
+                                type="text"
+                                value="1000"
+                                readonly
+                            >
+
+                            <select id="toUnit"></select>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="factor">
+
+                    <span>
+                        Conversion factor
+                    </span>
+
+                    <strong id="factorText">
+                        1 kilometer = 1000 meters
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <p class="hint">
+                Values update as you type.
+                Results rounded to 4 decimal places.
+            </p>
+
+        </section>
+
+
+        <!-- RESULT -->
+        <section class="result-area">
+
+            <div class="result-symbol">
+                ✓
+            </div>
+
+            <p id="resultMessage">
+                Ready for conversion
+            </p>
+
+        </section>
+
+
+        <!-- FEATURES -->
+        <section class="features">
+
+            <div class="feature">
+
+                <span>01</span>
+
+                <div>
+                    <h3>Live Conversion</h3>
+                    <p>
+                        Results update instantly as you type.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="feature">
+
+                <span>02</span>
+
+                <div>
+                    <h3>Accurate</h3>
+                    <p>
+                        Results are rounded to four decimals.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="feature">
+
+                <span>03</span>
+
+                <div>
+                    <h3>Responsive</h3>
+                    <p>
+                        Designed for mobile and desktop.
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <footer>
+
+            <div class="footer-line"></div>
+
+            <p>
+                Built with
+                <strong>HTML5</strong>
+                •
+                <strong>CSS3</strong>
+                •
+                <strong>JavaScript</strong>
+            </p>
+
+            <small>
+                Veda Technology Internship • Task 15
+            </small>
+
+        </footer>
+
+    </main>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
